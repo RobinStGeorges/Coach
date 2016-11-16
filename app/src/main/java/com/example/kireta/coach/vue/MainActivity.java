@@ -1,5 +1,5 @@
 package com.example.kireta.coach.vue;
-
+import com.example.kireta.coach.R;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         btnCalc = (Button) findViewById(R.id.btnCalc) ;
         controle = Controle.getInstance(this);
         ecouteCalcul();
+        recupProfil();
     }
 
     /**
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 controle.creerProfil( poids, taille, age, sexe,MainActivity.this);
                 float IMG=controle.getIMG();
                 String message = controle.getMessage();
-                String IMGM=String.format("{0}",IMG);
+
                 //test du message pour renvoyer l'image
                 if(message=="trop faible"){
                     //Change l'image
@@ -90,18 +91,18 @@ public class MainActivity extends AppCompatActivity {
                     //Change la couleur du texte
                     lblIMG.setTextColor(Color.RED);
                     //defini le texte
-                    lblIMG.setText(IMG+" : trop faible");
+                    lblIMG.setText(String.format("%.01f",IMG)+" : trop faible");
                 }
                 else if(message=="normal"){
                     imgSmiley.setImageResource(R.drawable.normal);
                     lblIMG.setTextColor(Color.GREEN);
-                    lblIMG.setText(IMG+" : normal");
+                    lblIMG.setText(String.format("%.01f",IMG)+" : normal");
                 }
                 else{
                     //Message = trop élevé par default
                     imgSmiley.setImageResource(R.drawable.graisse);
                     lblIMG.setTextColor(Color.RED);
-                    lblIMG.setText(IMG+" : trop élevé");
+                    lblIMG.setText(String.format("%.01f",IMG)+" : trop élevé");
                 }
 
             }
@@ -112,10 +113,14 @@ public class MainActivity extends AppCompatActivity {
      *
      */
     private void recupProfil(){
-        if(controle.getTaille()!=null) {
+        if(controle.getTaille()!= null) {
+
+            //donne la valeur sauvegardé
             txtTaille.setText("" + controle.getTaille());
             txtAge.setText("" + controle.getAge());
             txtPoids.setText("" + controle.getPoids());
+
+            //imite un clic du bouton
             findViewById(R.id.btnCalc).performClick();
         }
     }
