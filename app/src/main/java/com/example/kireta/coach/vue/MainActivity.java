@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCalc;
     private Controle controle;
 
-
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
