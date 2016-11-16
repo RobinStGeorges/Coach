@@ -5,6 +5,8 @@ import android.content.Context;
 import com.example.kireta.coach.modele.Profil;
 import com.example.kireta.coach.outils.Serializer;
 
+import java.util.Date;
+
 /**
  * Created by kIRETA on 12/11/2016.
  */
@@ -35,8 +37,10 @@ public final class Controle {
      * @param sexe 1 pour homme 0 pour femme
      */
     public  void creerProfil(int poids,int taille,int age,int sexe, Context context){
-        profil=new Profil(poids,taille,age,sexe);
-        Serializer.serialize(nomFic,profil,context);
+        profil=new Profil(poids,taille,age,sexe,new Date());
+        //Enregistre l proil qui vient d'être cree
+        //Mise en commentaire pour la partie sql
+       // Serializer.serialize(nomFic,profil,context);
     }
 
     /**

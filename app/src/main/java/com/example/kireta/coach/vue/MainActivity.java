@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
         btnCalc = (Button) findViewById(R.id.btnCalc) ;
         controle = Controle.getInstance(this);
         ecouteCalcul();
-        recupProfil();
+        //Recuperation du profil
+        //mis en comentaire pour la partie sql
+        //recupProfil();
     }
 
     /**
