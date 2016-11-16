@@ -15,7 +15,7 @@ import com.example.kireta.coach.R;
 import com.example.kireta.coach.controleur.Controle;
 import com.example.kireta.coach.modele.Profil;
 
-import static com.example.kireta.coach.controleur.Controle.getMessage;
+
 
 public class MainActivity extends AppCompatActivity {
     //txtPoids, txtTaille, txtAge, rdHomme, lblIMG et imgSmiley
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         imgSmiley = (ImageView) findViewById(R.id.imgSmiley) ;
         lblIMG = (TextView) findViewById(R.id.lblIMG) ;
         btnCalc = (Button) findViewById(R.id.btnCalc) ;
-        controle = Controle.getInstance();
+        controle = Controle.getInstance(this);
         ecouteCalcul();
     }
 
@@ -79,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
             private void aficheResult(int poids,int taille,int age,int sexe){
-                Controle.creerProfil( poids, taille, age, sexe);
-                float IMG=Controle.getIMG();
-                String message = getMessage();
+                controle.creerProfil( poids, taille, age, sexe,MainActivity.this);
+                float IMG=controle.getIMG();
+                String message = controle.getMessage();
                 String IMGM=String.format("{0}",IMG);
                 //test du message pour renvoyer l'image
                 if(message=="trop faible"){
@@ -106,5 +106,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    /**
+     *
+     */
+    private void recupProfil(){
+        if(controle.getTaille()!=null) {
+            txtTaille.setText("" + controle.getTaille());
+            txtAge.setText("" + controle.getAge());
+            txtPoids.setText("" + controle.getPoids());
+            findViewById(R.id.btnCalc).performClick();
+        }
     }
 }

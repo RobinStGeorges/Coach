@@ -12,15 +12,16 @@ import com.example.kireta.coach.outils.Serializer;
 public final class Controle {
     private static Controle instance=null;
     private static Profil profil;
-    private static String nomFic=saveProfil;
+    private static String nomFic= "saveProfil";
 
     private Controle() {
         super();
     }
 
-    public static final Controle getInstance(){
+    public static final Controle getInstance(Context context){
         if (Controle.instance==null){
             Controle.instance = new Controle() ;
+            recupSerialize(context);
 
         }
         return Controle.instance;
@@ -33,16 +34,16 @@ public final class Controle {
      * @param age
      * @param sexe 1 pour homme 0 pour femme
      */
-    public static void creerProfil(int poids,int taille,int age,int sexe, Context context){
+    public  void creerProfil(int poids,int taille,int age,int sexe, Context context){
         profil=new Profil(poids,taille,age,sexe);
-        Serializer.serialize(saveProfil,profil,context);
+        Serializer.serialize(nomFic,profil,context);
     }
 
     /**
      *
      * @return
      */
-    public static float getIMG(){
+    public float getIMG(){
         return profil.getImg();
     }
 
@@ -50,10 +51,53 @@ public final class Controle {
      *
      * @return
      */
-    public static String getMessage(){
+    public String getMessage(){
         return profil.getMessage();
     }
+
+    /**
+     * page 35
+     * @return
+     */
+    public Integer getTaille(){
+        if (profil==null) {
+            return null;
+        }
+         else{
+            return profil.getTaille();
+        }
+    }
+    public Integer getPoids(){
+        if (profil==null) {
+            return null;
+        }
+        else{
+            return profil.getPoids();
+        }
+    }
+    public Integer getAge(){
+        if (profil==null) {
+            return null;
+        }
+        else{
+            return profil.getAge();
+        }
+    }
+    public Integer getSexe(){
+        if (profil==null) {
+            return null;
+        }
+        else{
+            return profil.getSexe();
+        }
+    }
+
+
+    /**
+     *
+     * @param context
+     */
     private static void recupSerialize(Context context){
-        
+        profil=(Profil)Serializer.deSerialize(nomFic,context);
     }
 }

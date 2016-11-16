@@ -1,10 +1,14 @@
 package com.example.kireta.coach.modele;
 
+import com.example.kireta.coach.outils.Serializer;
+
+import java.io.Serializable;
+
 /**
  * Created by kIRETA on 12/11/2016.
  */
 
-public class Profil {
+public class Profil implements Serializable{
     // Constantes
     private static final Integer minFemme = 15; // maigre si en dessous
     private static final Integer maxFemme = 30; // gros si au dessus
@@ -14,7 +18,7 @@ public class Profil {
     //Variables
 
     private int poids;
-    private int taille;
+    private Integer taille;
     private int age;
     private int sexe; //S=0 pour une femme, =1 pour un homme
     private float img;
@@ -36,7 +40,7 @@ public class Profil {
         return poids;
     }
 
-    public int getTaille() {
+    public Integer getTaille() {
         return taille;
     }
 
