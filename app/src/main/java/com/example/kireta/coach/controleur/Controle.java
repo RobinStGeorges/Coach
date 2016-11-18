@@ -2,6 +2,7 @@ package com.example.kireta.coach.controleur;
 
 import android.content.Context;
 
+import com.example.kireta.coach.modele.AccesLocal;
 import com.example.kireta.coach.modele.Profil;
 import com.example.kireta.coach.outils.Serializer;
 
@@ -15,6 +16,7 @@ public final class Controle {
     private static Controle instance=null;
     private static Profil profil;
     private static String nomFic= "saveProfil";
+    private static AccesLocal accesLocal;
 
     private Controle() {
         super();
@@ -23,6 +25,8 @@ public final class Controle {
     public static final Controle getInstance(Context context){
         if (Controle.instance==null){
             Controle.instance = new Controle() ;
+            accesLocal=new AccesLocal(context);//Context???
+            profil=accesLocal.recupDernier();
             recupSerialize(context);
 
         }
@@ -41,6 +45,7 @@ public final class Controle {
         //Enregistre l proil qui vient d'être cree
         //Mise en commentaire pour la partie sql
        // Serializer.serialize(nomFic,profil,context);
+        accesLocal.ajoutProfil(profil);
     }
 
     /**

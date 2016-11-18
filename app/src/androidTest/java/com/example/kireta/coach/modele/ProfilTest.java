@@ -2,6 +2,8 @@ package com.example.kireta.coach.modele;
 
 import org.junit.Test;
 
+import java.util.Date;
+
 import static org.junit.Assert.*;
 
 /**
@@ -9,7 +11,8 @@ import static org.junit.Assert.*;
  */
 public class ProfilTest {
     //Creation d'un profile femme
-    private Profil profil = new Profil(67,165,35,0);
+    private Date date =new Date();
+    private Profil profil = new Profil(67,165,35,0,date);
     //Resultat de l'img
     private float img=(float)32.2;
     //message correspondant
