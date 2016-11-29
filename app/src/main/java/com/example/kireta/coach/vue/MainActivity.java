@@ -3,6 +3,7 @@ import com.example.kireta.coach.R;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.example.kireta.coach.modele.AccesLocal;
 import com.example.kireta.coach.R;
 import com.example.kireta.coach.controleur.Controle;
 import com.example.kireta.coach.modele.Profil;
@@ -49,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
         ecouteCalcul();
         //Recuperation du profil
         //mis en comentaire pour la partie sql
-        recupProfil();
+        //recupProfil();
+
     }
 
     /**
@@ -115,12 +117,20 @@ public class MainActivity extends AppCompatActivity {
      *
      */
     private void recupProfil(){
+        //Profil profilR=AccesLocal.recupDernier();
+        //mettre les .getxxx de profilR
         if(controle.getTaille()!= null) {
 
             //donne la valeur sauvegardé
             txtTaille.setText("" + controle.getTaille());
+            //txtTaille.setText("" + profilR.getTaille());
+
+            //Log.d("Taille=",txtTaille);
             txtAge.setText("" + controle.getAge());
+            //txtAge.setText("" + profilR.getAge());
+
             txtPoids.setText("" + controle.getPoids());
+            //txtPoids.setText("" + profilR.getPoids());
 
             //imite un clic du bouton
             findViewById(R.id.btnCalc).performClick();

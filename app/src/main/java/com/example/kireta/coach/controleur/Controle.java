@@ -5,7 +5,7 @@ import android.content.Context;
 import com.example.kireta.coach.modele.AccesLocal;
 import com.example.kireta.coach.modele.Profil;
 import com.example.kireta.coach.outils.Serializer;
-
+import android.util.Log;
 import java.util.Date;
 
 /**

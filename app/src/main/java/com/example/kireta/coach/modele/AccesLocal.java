@@ -18,6 +18,7 @@ public class AccesLocal {
     private MySQLiteOpenHelper accesDB;
     private SQLiteDatabase db;
     private String req;
+    private String reqAP="";
 
 
     public AccesLocal(Context context) {
@@ -30,25 +31,25 @@ public class AccesLocal {
      */
     public void ajoutProfil(Profil profil){
         db=accesDB.getWritableDatabase();
-        req += "(\"" + profil.getDateMesure() + "\"," + profil.getPoids() + "," + profil.getTaille() + "," + profil.getAge() + "," + profil.getSexe() + ")";
-        db.execSQL(req);
+        reqAP = "insert into profil values (\"" + profil.getDateMesure() + "\"," + profil.getPoids() + "," + profil.getTaille() + "," + profil.getAge() + "," + profil.getSexe() + ")";
+        db.execSQL(reqAP);
     }
     public Profil recupDernier(){
         Profil unProfil=null;
         db=accesDB.getReadableDatabase();
-        req="SELECT * FROM profil ORDER BY datemesure ASC";
+        String reqRD="SELECT * FROM profil ORDER BY datemesure ASC";
         Cursor curseur;
-        curseur=db.rawQuery(req,null);
+        curseur=db.rawQuery(reqRD,null);
         curseur.moveToFirst();
-        do {
+        //if (curseur.moveToNext()){
             Date date = new Date();
             int poids=curseur.getInt(1);
             int taille=curseur.getInt(2);
             int age=curseur.getInt(3);
             int sexe=curseur.getInt(4);
             unProfil=new Profil(poids,taille,age,sexe,date);
+        //}
 
-        } while (curseur.moveToNext());
         curseur.close();
         return unProfil;
     }
