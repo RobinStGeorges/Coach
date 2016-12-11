@@ -13,13 +13,13 @@ import org.json.JSONObject;
  */
 
 public class AccesDistant implements AsyncResponse {
-    final String SERVERADDR ="http://82.230.54.137/coach/serveurcoach.php";
+    final String SERVERADDR ="http://192.168.43.18/coach/serveurcoach.php";
 
     public AccesDistant(){
         super() ;
     }
     public void processFinish(String output){
-        Log.d("serveur", "************" + output);
+        Log.d("serveur process Finish", "************" + output);
         String[] message = output.split("%");
         if (message.length>1){
             if (message[0]=="enreg"){

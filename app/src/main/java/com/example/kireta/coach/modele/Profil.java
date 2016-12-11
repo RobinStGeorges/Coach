@@ -1,9 +1,14 @@
 package com.example.kireta.coach.modele;
 
 import com.example.kireta.coach.outils.Serializer;
+import com.example.kireta.coach.modele.AccesDistant;
+
+import org.json.JSONArray;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by kIRETA on 12/11/2016.
@@ -138,7 +143,17 @@ public class Profil implements Serializable{
     public Date getDateMesure() {
         return dateMesure;
     }
-
+    public JSONArray convertToJSONArray(){
+        List uneListe =new ArrayList();
+        uneListe.add(dateMesure);
+        uneListe.add(poids);
+        uneListe.add(taille);
+        uneListe.add(age);
+        uneListe.add(sexe);
+        JSONArray Jsona= new JSONArray(uneListe) ;
+        return Jsona;
     }
+
+}
 
 

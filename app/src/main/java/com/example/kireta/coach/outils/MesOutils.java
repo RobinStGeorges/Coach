@@ -14,7 +14,7 @@ public abstract class MesOutils {
     public static Date convertStringToDate(String unedate) {
         Log.d("avant string2date","******************"+unedate);
         //String expectedPattern = "EEE MMM dd hh:mm:ss 'UTC' yyyy";
-        String expectedPattern = "hh:mm:ss";
+        String expectedPattern = "dd/MM/yy HH:mm:ss";
         //String expectedPattern = "dd/mm/yy hh:mm:ss";
         SimpleDateFormat formatter = new SimpleDateFormat(expectedPattern);
         try {

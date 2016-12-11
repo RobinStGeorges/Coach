@@ -2,10 +2,14 @@ package com.example.kireta.coach.controleur;
 
 import android.content.Context;
 
+import com.example.kireta.coach.modele.AccesDistant;
 import com.example.kireta.coach.modele.AccesLocal;
 import com.example.kireta.coach.modele.Profil;
 import com.example.kireta.coach.outils.Serializer;
 import android.util.Log;
+
+import org.json.JSONArray;
+
 import java.util.Date;
 
 /**
@@ -16,7 +20,8 @@ public final class Controle {
     private static Controle instance=null;
     private static Profil profil;
     private static String nomFic= "saveProfil";
-    private static AccesLocal accesLocal;
+    //private static AccesLocal accesLocal;
+    private static AccesDistant accesDistant;
 
     private Controle() {
         super();
@@ -25,9 +30,16 @@ public final class Controle {
     public static final Controle getInstance(Context context){
         if (Controle.instance==null){
             Controle.instance = new Controle() ;
-            accesLocal=new AccesLocal(context);//Context???
-            profil=accesLocal.recupDernier();
-            recupSerialize(context);
+            accesDistant = new AccesDistant() ;
+            accesDistant.envoi("dernier", new JSONArray());
+
+            //Acces via MSQLIght
+            //accesLocal=new AccesLocal(context);//Context???
+            //profil=accesLocal.recupDernier();
+
+
+            //recupSerialize(context);
+            //Log.d("profil","*******************"+profil);
 
         }
         return Controle.instance;
@@ -45,7 +57,12 @@ public final class Controle {
         //Enregistre l proil qui vient d'être cree
         //Mise en commentaire pour la partie sql
        // Serializer.serialize(nomFic,profil,context);
-        accesLocal.ajoutProfil(profil);
+
+        //base de donnée a distance
+        accesDistant.envoi("enreg", profil.convertToJSONArray());
+        //base de donnée MSQLight
+        //accesLocal.ajoutProfil(profil);
+
     }
 
     /**
