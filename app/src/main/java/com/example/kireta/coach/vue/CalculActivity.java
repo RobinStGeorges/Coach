@@ -3,7 +3,6 @@ import com.example.kireta.coach.R;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,14 +10,11 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.kireta.coach.modele.AccesLocal;
-import com.example.kireta.coach.R;
+
 import com.example.kireta.coach.controleur.Controle;
-import com.example.kireta.coach.modele.Profil;
 
 
-
-public class MainActivity extends AppCompatActivity {
+public class CalculActivity extends AppCompatActivity {
     //txtPoids, txtTaille, txtAge, rdHomme, lblIMG et imgSmiley
     private TextView txtPoids;
     private TextView txtTaille;
@@ -50,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
         ecouteCalcul();
         //Recuperation du profil
         //mis en comentaire pour la partie sql
-        recupProfil();
+        //page47
+        //recupProfil();
 
     }
 
@@ -61,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.btnCalc)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 //Test du bouton calculer avec la methode maketest
-                //Toast.makeText(MainActivity.this, "test", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(CalculActivity.this, "test", Toast.LENGTH_SHORT).show();
 
                 //Recuperation du poids, de la taille ,et de l'age
                 Integer poids = Integer.parseInt(txtPoids.getText().toString());
@@ -75,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //Test si les champs sont vides
                 if(poids==0 || taille==0 || age==0){
-                    Toast.makeText(MainActivity.this, "veuillez remplir tout les champs", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CalculActivity.this, "veuillez remplir tout les champs", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     //affichage du message et de la bonne image
@@ -84,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
             private void aficheResult(int poids,int taille,int age,int sexe){
-                controle.creerProfil( poids, taille, age, sexe,MainActivity.this);
+                controle.creerProfil( poids, taille, age, sexe,CalculActivity.this);
                 float IMG=controle.getIMG();
                 String message = controle.getMessage();
 
@@ -116,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      *
      */
-    private void recupProfil(){
+    public void recupProfil(){
         //Profil profilR=AccesLocal.recupDernier();
         //mettre les .getxxx de profilR
         if(controle.getTaille()!= null) {

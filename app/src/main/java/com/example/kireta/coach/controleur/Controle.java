@@ -3,10 +3,9 @@ package com.example.kireta.coach.controleur;
 import android.content.Context;
 
 import com.example.kireta.coach.modele.AccesDistant;
-import com.example.kireta.coach.modele.AccesLocal;
 import com.example.kireta.coach.modele.Profil;
 import com.example.kireta.coach.outils.Serializer;
-import android.util.Log;
+import com.example.kireta.coach.vue.CalculActivity;
 
 import org.json.JSONArray;
 
@@ -22,7 +21,7 @@ public final class Controle {
     private static String nomFic= "saveProfil";
     //private static AccesLocal accesLocal;
     private static AccesDistant accesDistant;
-
+    private static Context unContext;
     private Controle() {
         super();
     }
@@ -30,7 +29,7 @@ public final class Controle {
     public static final Controle getInstance(Context context){
         if (Controle.instance==null){
             Controle.instance = new Controle() ;
-            accesDistant = new AccesDistant() ;
+            accesDistant = new AccesDistant(Controle.instance) ;
             accesDistant.envoi("dernier", new JSONArray());
 
             //Acces via MSQLIght
@@ -40,6 +39,8 @@ public final class Controle {
 
             //recupSerialize(context);
             //Log.d("profil","*******************"+profil);
+
+            unContext=context;
 
         }
         return Controle.instance;
@@ -125,5 +126,9 @@ public final class Controle {
      */
     private static void recupSerialize(Context context){
         profil=(Profil)Serializer.deSerialize(nomFic,context);
+    }
+    public void setProfil(Profil profil){
+        Controle.profil=profil;
+        ((CalculActivity)unContext).recupProfil();
     }
 }
