@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-//
+//test
 import com.example.kireta.coach.controleur.Controle;
 
 
