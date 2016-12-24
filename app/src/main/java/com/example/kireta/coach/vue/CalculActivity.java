@@ -1,11 +1,14 @@
 package com.example.kireta.coach.vue;
 import com.example.kireta.coach.R;
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -30,8 +33,10 @@ public class CalculActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_calcul);
         init();
+        //Pour le bouton menu
+        creerMenu();
     }
     private void init(){
         txtPoids = (EditText) findViewById(R.id.editText) ;
@@ -132,5 +137,21 @@ public class CalculActivity extends AppCompatActivity {
             //imite un clic du bouton
             findViewById(R.id.btnCalc).performClick();
         }
+    }
+    //bouton retour menu
+    public void creerMenu(){
+        //appel de ecoute menu pou clic sur l'image retourn menu
+        ecouteMenu((ImageButton)findViewById(R.id.imgBtnMenu),MainActivity.class);
+
+
+    }
+    public void ecouteMenu(ImageButton a, final Class b){
+
+        (a).setOnClickListener(new ImageButton.OnClickListener() {
+            public void onClick(View v) {
+                Intent c=new Intent(CalculActivity.this,b);
+                startActivity(c);
+            }
+        });
     }
 }

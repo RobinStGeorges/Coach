@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.kireta.coach.vue.CalculActivity">
+    tools:context="com.example.kireta.coach.vue.MainActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -20,153 +20,69 @@
         android:layout_alignParentStart="true">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center_horizontal">
+            android:layout_height="232dp">
 
             <LinearLayout
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical|center_horizontal">
-
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/grpRadioSexe">
-
-                    <RadioButton
-                        android:text="HOMME"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/rdHomme"
-                        android:layout_weight="1"
-                        android:checked="true" />
-
-                    <RadioButton
-                        android:text="FEMME"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/rdFemme"
-                        android:layout_weight="1" />
-                </RadioGroup>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="149dp"
+                android:weightSum="1"
                 android:layout_weight="1">
 
-                <LinearLayout
-                    android:orientation="horizontal"
+                <TextView
+                    android:text="Mon IMG"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal">
-
-                    <TextView
-                        android:text="Poids:"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtpoids" />
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:ems="10"
-                        android:id="@+id/editText"
-                        android:layout_weight="1" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal">
-
-                    <TextView
-                        android:text="Taille:"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtTaille" />
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:ems="10"
-                        android:id="@+id/editText2"
-                        android:layout_weight="1" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal">
-
-                    <TextView
-                        android:text="Age:"
-                        android:layout_width="41dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtAge" />
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:ems="10"
-                        android:id="@+id/editText3"
-                        android:layout_weight="1" />
-
-                </LinearLayout>
+                    android:layout_height="79dp"
+                    android:id="@+id/textView3"
+                    android:gravity="center" />
             </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_vertical|center_horizontal">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="135dp">
 
-            <Button
-                android:text="Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnCalc"
-                android:layout_weight="1" />
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/normal"
+                    android:id="@+id/imageButton" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_vertical|center_horizontal">
+            android:layout_height="236dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/normal"
-                android:id="@+id/imgSmiley"
-                android:layout_weight="1" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="74dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/lblIMG"
-                android:layout_weight="1" />
+                <TextView
+                    android:text="Historique"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView5"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </LinearLayout>
 
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="158dp"
+                android:layout_weight="1">
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/historique"
+                    android:id="@+id/imageButton2" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
