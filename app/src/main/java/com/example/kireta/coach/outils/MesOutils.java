@@ -31,4 +31,7 @@ public abstract class MesOutils {
         SimpleDateFormat date = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
         return date.format(uneDate);
     }
+    public static String format2Decimal (Float a){
+        return String.format("%.01f", a);
+    }
 }

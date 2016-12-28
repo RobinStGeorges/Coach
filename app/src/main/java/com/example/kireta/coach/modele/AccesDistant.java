@@ -45,6 +45,13 @@ public class AccesDistant implements AsyncResponse {
                     e.printStackTrace();
                 }
             }
+            if (message[0].equals("tout")){
+                try {
+                    //recuperation de tout les profils
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
             if (message[0].equals("Erreur !")){
                 Log.d("*******************","Erreur"+message);
             }
