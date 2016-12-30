@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         ecouteCalcul();
         //Recuperation du profil
         //mis en comentaire pour la partie sql
-        //recupProfil();
+        recupProfil();
 
     }
 
